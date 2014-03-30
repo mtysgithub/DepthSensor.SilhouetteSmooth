@@ -1,4 +1,4 @@
-DepthSensor_SilhouetteCompare
+DepthSensor_SilhouetteSmooth
 =============================
 
 A smooth algorithm in order to opt depth image of depth sensor
