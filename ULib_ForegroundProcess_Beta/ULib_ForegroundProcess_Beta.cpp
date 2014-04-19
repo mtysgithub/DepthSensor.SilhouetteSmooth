@@ -11,6 +11,8 @@ HRESULT CJU_ForegroundSmoothFilter_Init(IN BYTE sfIndex, IN int videoWidth, IN i
 										IN int spaceDnrFilterWIndowSize = 5,
 										IN int openClacStepCount = 1,
 										IN int closeClacStepCount = 1,
+										IN UINT bgClr = 0x00000000, 
+										IN UINT frontClr = 0xff0000ff,
 										IN bool enableMedianFilteringAlgorithm = true,
 										OUT int *pTargetTexturePixels = NULL, OUT int *pTargetDepthInfo = NULL)
 {
@@ -23,6 +25,8 @@ HRESULT CJU_ForegroundSmoothFilter_Init(IN BYTE sfIndex, IN int videoWidth, IN i
 																		spaceDnrFilterWIndowSize,
 																		openClacStepCount,
 																		closeClacStepCount,
+																		bgClr,
+																		frontClr,
 																		enableMedianFilteringAlgorithm,
 																		pTargetTexturePixels, pTargetDepthInfo);
 }

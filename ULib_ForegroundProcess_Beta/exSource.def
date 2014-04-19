@@ -1,8 +1,0 @@
-LIBRARY ULIB_FOREGROUNDPROCESS_BETA
-EXPORTS
-	CJU_ForegroundSmoothFilter_Init
-	CJU_ForegroundSmoothFilter_UnInit
-	CJU_ForegroundSmoothFilter_AddUser
-	CJU_ForegroundSmoothFilter_ExitUser
-	CJU_ForegroundSmoothFilter_SmoothPerframe
-	CJU_ForegroundSmoothFilter_EnableAlgorithm

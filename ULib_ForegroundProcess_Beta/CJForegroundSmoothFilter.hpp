@@ -138,9 +138,13 @@ public:
 		IN int openClacStepCount,
 		IN int closeClacStepCount,
 		IN bool enableMedianFilteringAlgorithm,
+		IN UINT bgClr,
+		IN UINT frontClr,
 		OUT int *pTargetTexturePixels, OUT int *pTargetDepthInfo)
 	{
 		m_bAlgorithm = true;
+		m_backgroundColor = bgClr;
+		m_frontColor = frontClr;
 
 		m_videoWidth = videoWidth;
 		m_videoHeight = videoHeight;
@@ -636,10 +640,11 @@ private:
 			BYTE clrVal = (BYTE)((0x80 * frontPixelSumVal) / winPixelsNum);
 			if (0 < clrVal)
 			{
-				m_pTargetTexturePixels[i] = 0xff000000 | (clrVal);
+				//gray scale
+				m_pTargetTexturePixels[i] = 0xff000000 | (clrVal) | (clrVal << 8) | (clrVal << 16);
 			}else
 			{
-				m_pTargetTexturePixels[i] = 0x00000000;
+				m_pTargetTexturePixels[i] = m_backgroundColor;
 			}
 		}
 	}
@@ -655,7 +660,7 @@ private:
 			{
 				for (int i = 0; i < m_pixelBuffLength; ++i)
 				{
-					m_pTargetTexturePixels[i] = (m_pToDnrBitColors[i]) ? (0xff000080) : (0x00000000);
+					m_pTargetTexturePixels[i] = (m_pToDnrBitColors[i]) ? (m_frontColor) : (m_backgroundColor);
 				}
 			}
 		}
@@ -663,6 +668,8 @@ private:
 
 private:
 	bool m_bAlgorithm;
+	UINT m_backgroundColor;
+	UINT m_frontColor;
 
 	int m_videoWidth;
 	int m_videoHeight;
